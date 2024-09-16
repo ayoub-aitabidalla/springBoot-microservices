@@ -6,9 +6,9 @@
         @for (task of tasks; track $index) {
             <div class="bg-white px-4 py-4 rounded-md space-y-2 border-2 flex flex-col justify-between h-full">
                 <div>
-                    <span class="py-1 px-2 text-[#62ba51] bg-[#dcf2d4] rounded-md">Done</span>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum, nemo!</p>
-                    <p class="">23 Mar, 2024</p>
+                    <span class="py-1 px-2 text-[#62ba51] bg-[#dcf2d4] rounded-md">{{task.status}}</span>
+                    <p>{{task.title}}</p>
+                    <p class="">{{task.date}}</p>
                 </div>
                 <div class="flex justify-end mt-4">
                     <button class="btn btn-outline btn-error">Delete Task</button>
