@@ -3,7 +3,7 @@ package com.aitabidalla.user_service.user;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/user")
