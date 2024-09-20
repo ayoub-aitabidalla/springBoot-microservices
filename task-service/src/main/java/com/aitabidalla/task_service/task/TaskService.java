@@ -33,6 +33,7 @@ public class TaskService {
             throw new IllegalArgumentException("Task with the same title already exists for this user.");
         }
         task.setDate(LocalDate.now());
+        task.setStatus("To Do");
         Task savedTask = taskRepository.save(task);
         String username = getUsernameByUserId(task.getUserId());
         return convertTaskToTaskResponse(savedTask, username);
@@ -49,17 +50,14 @@ public class TaskService {
     }
 
 
-    public String markTaskAsCompleted(Long taskId) {
+    public TaskResponse markTaskAsCompleted(Long taskId) {
         Task task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new IllegalArgumentException("Task not found with id: " + taskId));
 
-        if ("Done".equals(task.getStatus())) {
-            throw new IllegalStateException("Task is already marked as completed.");
-        }
-
         task.setStatus("Done");
-        taskRepository.save(task);
-        return task.getStatus();
+        Task updatedTask = taskRepository.save(task);
+        return convertTaskToTaskResponse(updatedTask, getUsernameByUserId(updatedTask.getUserId()));
+
     }
 
     public void deleteTask(Long taskId) {

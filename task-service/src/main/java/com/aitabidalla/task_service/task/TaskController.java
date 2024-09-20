@@ -24,9 +24,8 @@ public class TaskController {
         return taskService.getAllTasksByUserId(userId);
     }
     @PutMapping("/{taskId}/complete")
-    public ResponseEntity<String> markTaskAsCompleted(@PathVariable Long taskId) {
-       String resp =  taskService.markTaskAsCompleted(taskId);
-        return ResponseEntity.ok(resp);
+    public ResponseEntity<TaskResponse> markTaskAsCompleted(@PathVariable Long taskId) {
+        return ResponseEntity.ok(taskService.markTaskAsCompleted(taskId));
     }
 
     @DeleteMapping("/{taskId}")
